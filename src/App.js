@@ -1,12 +1,13 @@
+import { BrowserRouter } from "react-router-dom";
 import Nav from "./components/Nav";
-import News from "./components/News";
+import CategoryRoute from "./components/Routes/CategoryRoute";
 
 function App() {
   return (
-    <div>
+    <BrowserRouter>
       <Nav />
-      <News />
-    </div>
+      <CategoryRoute />
+    </BrowserRouter>
   );
 }
 

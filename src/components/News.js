@@ -13,8 +13,7 @@ export default class News extends Component {
   }
 
   async componentDidMount() {
-    let url =
-      "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=8f91f6d22e4c4597bb189ebc0c208191";
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${this.props.category}&apiKey=8f91f6d22e4c4597bb189ebc0c208191`;
     this.setState({ inLoading: true });
     let data = await fetch(url);
     let parseData = await data.json();
@@ -26,7 +25,9 @@ export default class News extends Component {
   }
 
   handlePrevClick = async () => {
-    let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=8f91f6d22e4c4597bb189ebc0c208191&page=${
+    let url = `https://newsapi.org/v2/top-headlines?country=us&category=${
+      this.props.category
+    }&apiKey=8f91f6d22e4c4597bb189ebc0c208191&page=${
       this.state.page - 1
     }&pageSize=20`;
     this.setState({ inLoading: true });
@@ -40,7 +41,9 @@ export default class News extends Component {
   };
   handleNextClick = async () => {
     if (!(this.state.page + 1 > Math.ceil(this.state.totalResults / 20))) {
-      let url = `https://newsapi.org/v2/top-headlines?country=in&apiKey=8f91f6d22e4c4597bb189ebc0c208191&page=${
+      let url = `https://newsapi.org/v2/top-headlines?country=us&category=${
+        this.props.category
+      }&apiKey=8f91f6d22e4c4597bb189ebc0c208191&page=${
         this.state.page + 1
       }&pageSize=20`;
       this.setState({ inLoading: true });
@@ -57,8 +60,8 @@ export default class News extends Component {
   render() {
     return (
       <div className="container my-3 ">
-        <h2 className="text-center">Daily News - Top Headlines</h2>
-        <div className="container d-flex justify-content-between">
+        <h2 className="text-center m-3">Daily News {this.props.category}</h2>
+        <div className="container d-flex justify-content-between my-3">
           <button
             disabled={this.state.page <= 1}
             onClick={this.handlePrevClick}
@@ -81,8 +84,7 @@ export default class News extends Component {
         {this.state.inLoading && <Spinner />}
         <div className="row">
           {this.state.articles?.map((news) => {
-            console.log(this.state.articles);
-            const { title, description, urlToImage, url } = news;
+            const { title, description, urlToImage, publishedAt, url } = news;
             return (
               <div className="col-md-4" key={url}>
                 <NewsItem
@@ -93,6 +95,7 @@ export default class News extends Component {
                       ? "https://media.gettyimages.com/id/1183370267/photo/man-war-journalist-with-camera.jpg?s=612x612&w=0&k=20&c=sPijDuHBJjl41OevpToIA8S0N2WsXA-S3TR7LLnyQrE="
                       : urlToImage
                   }
+                  publishedAt={publishedAt}
                   url={url}
                 />
               </div>
