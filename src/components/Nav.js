@@ -89,14 +89,14 @@ export default class Nav extends Component {
                 </ul>
               </li>
             </ul>
-            <form class="d-flex">
+            <form className="d-flex">
               <input
-                class="form-control me-2"
+                className="form-control me-2"
                 type="search"
                 placeholder="Search"
                 aria-label="Search"
               />
-              <button class="btn btn-outline-light" type="submit">
+              <button className="btn btn-outline-light" type="submit">
                 Search
               </button>
             </form>
@@ -106,3 +106,5 @@ export default class Nav extends Component {
     );
   }
 }
+
+//country:['ae','ar','at','au','be','bg','br','ca','ch','cn','co','cu','cz','de','eg','fr','gb','gr','hk','hu','id','ie','il','in','it','jp','kr','lt','lv','ma','mx','my','ng','nl','no','nz','ph','pl','pt','ro','rs','ru','sa','se','sg','si','sk','th','tr','tw','ua','us','ve','za']
