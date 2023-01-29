@@ -23,12 +23,12 @@ export default class Nav extends Component {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="#">
+                <a className="nav-link active" aria-current="page" href="/">
                   Home
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
+                <a className="nav-link" href="/">
                   About
                 </a>
               </li>
@@ -46,7 +46,7 @@ export default class Nav extends Component {
                 </a>
                 <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                   <li className="nav-item active">
-                    <Link to="/" className="nav-link text-dark fw-bold">
+                    <Link to="/business" className="nav-link text-dark fw-bold">
                       Business
                     </Link>
                   </li>
@@ -72,6 +72,14 @@ export default class Nav extends Component {
                   </li>
                   <li>
                     <Link
+                      to="/entertainment"
+                      className="nav-link text-dark fw-bold"
+                    >
+                      Entertainment
+                    </Link>
+                  </li>
+                  <li>
+                    <Link
                       to="/technology"
                       className="nav-link text-dark fw-bold"
                     >
@@ -81,6 +89,17 @@ export default class Nav extends Component {
                 </ul>
               </li>
             </ul>
+            <form class="d-flex">
+              <input
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search"
+              />
+              <button class="btn btn-outline-light" type="submit">
+                Search
+              </button>
+            </form>
           </div>
         </div>
       </nav>

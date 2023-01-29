@@ -7,10 +7,10 @@ export default class CategoryRoute extends Component {
     return (
       <div>
         <Routes>
-          <Route path="/" element={<News category="Business" />} />
+          <Route path="/business" element={<News category="Business" />} />
           <Route
             path="/entertainment"
-            element={<News category="Entertainment" />}
+            element={<News key="business" category="Entertainment" />}
           />
           <Route
             path="/general"

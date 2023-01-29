@@ -2,13 +2,20 @@ import React, { Component } from "react";
 
 export default class NewsItem extends Component {
   render() {
-    const { title, description, urlToImage, publishedAt, url } = this.props;
+    const { title, description, urlToImage, publishedAt, source, url } =
+      this.props;
     return (
       <div className=" container my-3  ">
         <div className="card">
           <img src={urlToImage} className="card-img-top" alt="..." />
           <div className="card-body">
-            <h5 className="card-title">{title.slice(0, 35)}...</h5>
+            <h5 className="card-title">
+              {title.slice(0, 35)}...
+              <span class="position-absolute top-0 start-50 translate-middle rounded-pill badge bg-info text-dark">
+                {source.name}
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </h5>
             <p className="card-text">{description.slice(0, 70)}...</p>
             <p className="card-text">
               <small className="text-muted">
