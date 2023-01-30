@@ -9,10 +9,9 @@ const News = (props) => {
 
   const fetchData = useGetDailyNewsQuery({
     category: `${category}`,
-    country: "in",
+    country: "bg",
   });
-  const fetchStatusData = fetchData.currentData;
-  console.log(fetchStatusData);
+
   const [articlesData, setArticlesData] = useState([]);
   // const [loading, setLoading] = useState(true);
   // const [page, setPage] = useState(1);

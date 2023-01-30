@@ -6,10 +6,10 @@ const CategoryRoute = () => {
   return (
     <div>
       <Routes>
-        <Route path="/business" element={<News category="Business" />} />
+        <Route path="/business" element={<News category="business" />} />
         <Route
           path="/entertainment"
-          element={<News key="business" category="business" />}
+          element={<News key="entertainment" category="entertainment" />}
         />
         <Route
           path="/general"
