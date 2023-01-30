@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import NewsItem from "./NewsItem";
-// import Spinner from "./spinner/Spinner";
-// import InfiniteScroll from "react-infinite-scroll-component";
+import Spinner from "./spinner/Spinner";
 import { useGetDailyNewsQuery } from "./api/apiCall";
 
 const News = (props) => {
@@ -9,56 +8,24 @@ const News = (props) => {
 
   const fetchData = useGetDailyNewsQuery({
     category: `${category}`,
-    country: "bg",
+    country: "it",
   });
 
   const [articlesData, setArticlesData] = useState([]);
-  // const [loading, setLoading] = useState(true);
-  // const [page, setPage] = useState(1);
-  // const [totalResults, setTotalResults] = useState(0);
-
-  // const updateNews = async () => {
-  //   let url = `https://newsapi.org/v2/top-headlines?country=ar&category=${props.category}&apiKey=336f068034984ac6a23bb33e144a0f9a&page=${page}&pageSize=20`;
-  //   setLoading(true);
-  //   let data = await fetch(url);
-  //   let parseData = await data.json();
-  //   setArticles(parseData.articles);
-  //   setTotalResults(parseData.totalResults);
-  //   setLoading(false);
-  // };
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    //   setLoading(true);
+    setLoading(true);
     setArticlesData(fetchData?.currentData?.articles);
-    //   setLoading(false);
-    //   setTotalResults(currentData.totalResults);
-    //   document.title = `${props.category}-Daily News`;
+    setLoading(false);
+    document.title = `${category}-Daily News`;
     // eslint-disable-next-line
   }, [fetchData]);
 
-  // const fetchMoreData = async () => {
-  //   let url = `https://newsapi.org/v2/top-headlines?country=ar&category=${
-  //     props.category
-  //   }&apiKey=336f068034984ac6a23bb33e144a0f9a&page=${page + 1}&pageSize=20`;
-  //   setPage(page + 1);
-  //   setLoading(true);
-  //   let data = await fetch(url);
-  //   let parseData = await data.json();
-  //   setArticles(articles.concat(parseData.articles));
-  //   setTotalResults(parseData.totalResults);
-  //   setLoading(false);
-  // };
-
   return (
     <div className="container mt-5 pt-5">
-      {/* <h2 className="text-center">Daily News {category}</h2> */}
-      {/* {loading && <Spinner />} */}
-      {/* <InfiniteScroll
-        dataLength={articles.length}
-        next={fetchMoreData}
-        hasMore={articles.length !== totalResults}
-        loader={loading ? <Spinner /> : ""}
-      > */}
+      <h2 className="text-center">Daily News {category}</h2>
+      {loading && <Spinner />}
       <div className="container">
         <div className="row">
           {articlesData?.map((news) => {
@@ -83,7 +50,6 @@ const News = (props) => {
           })}
         </div>
       </div>
-      {/* </InfiniteScroll> */}
     </div>
   );
 };
